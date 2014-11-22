@@ -21,9 +21,10 @@ public class tower : MonoBehaviour {
 	//pick what tower script to attach
 	public int towerNum;
 	//shoot timer
-	public int shootTimer = 0;
-	//helper variable
+	public float shootTimer;
+	//helper variables
 	float nextShot = 0.0f;
+
 	//scripts for each tower
 	tower1Script tower1;
 	tower2Script tower2;
@@ -53,7 +54,7 @@ public class tower : MonoBehaviour {
 	void Update () {
 		//SAME SELECTION
 		//Mouse clicked and not in sidebar
-		shootTimer++;
+
 		if(Input.GetMouseButton(0) && Input.mousePosition.x > 100)
 		{
 			if(overTower)
@@ -88,9 +89,11 @@ public class tower : MonoBehaviour {
 				float eX = childScript.enemy.transform.position.x;
 				float eY = childScript.enemy.transform.position.y;
 				//slow down bullet firing
-				if(Time.time > nextShot)
+
+				if(Time.time >= nextShot)
 				{
-					Debug.Log ("shot");
+					nextShot = Time.time + shootTimer;
+					Debug.Log ("Shot | " + Time.time.ToString() + " | " + nextShot.ToString());
 					GameObject enemy = (GameObject) Instantiate(bullet,transform.position,transform.rotation);
 					bulletScript tempScript = enemy.GetComponent<bulletScript>();
 					tempScript.posX = eX;
@@ -98,9 +101,16 @@ public class tower : MonoBehaviour {
 					tempScript.posZ = transform.position.z;
 					tempScript.enemy = childScript.enemy.gameObject;
 					//set shoot time
-					nextShot = Time.time + shootTimer;
+
 				}
+
+
+
 			}
+		}
+		else
+		{
+			nextShot = 0;
 		}
 	}
 
@@ -117,6 +127,7 @@ public class tower : MonoBehaviour {
 	void OnGUI()
 	{
 		GUI.Label(new Rect(50,50,50,50),Time.time.ToString());
+		GUI.Label(new Rect(70,70,50,50),nextShot.ToString());
 	}
 
 

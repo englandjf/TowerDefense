@@ -6,19 +6,15 @@ using System.Collections;
 
 public class tower2Script : MonoBehaviour {
 
-	public int level;
-	public int damage;
-	public int shootTime;
+	public int level = 1;
+	public int damage = 2;
+	public float shootTime = 2.0f;
 	public GameObject parentTower;
 	tower parentScript;
 
 	// Use this for initialization
 	void Start () {
-		level = 1;
-		damage = 2;
-		shootTime = 2;
 		parentScript  = parentTower.GetComponent<tower>();
-		Debug.Log ("T2");
 	}
 	
 	// Update is called once per frame

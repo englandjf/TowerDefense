@@ -3,6 +3,7 @@ using System.Collections;
 
 public class enemyScript : MonoBehaviour {
 
+	//Test
 	public bool dead = false;
 	public int health = 10;
 	// Use this for initialization
