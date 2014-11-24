@@ -7,7 +7,7 @@ using System.Collections;
 public class tower1Script : MonoBehaviour {
 
 	public int level = 1;
-	public int damage = 2;
+	public int damage = 1;
 	public float shootTime = 1.0f;
 	public GameObject parentTower;
 	tower parentScript;

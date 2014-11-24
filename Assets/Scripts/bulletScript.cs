@@ -9,6 +9,8 @@ public class bulletScript : MonoBehaviour {
 	public float posY;
 	public float posZ;
 	public GameObject enemy;
+	//damage per shot
+	public int damage = 0;
 	enemyScript enemyInfo;
 
 	float speed = 5.0f;
@@ -34,7 +36,8 @@ public class bulletScript : MonoBehaviour {
 
 	void OnTriggerEnter(Collider col)
 	{
-		enemyInfo.health--;
+		enemyInfo.damage+=damage;;
+		Debug.Log(enemyInfo.damage.ToString());
 		Destroy(this.gameObject);
 
 	}

@@ -5,13 +5,11 @@ public class collisionScript : MonoBehaviour {
 
 
 
-	public bool inside;
-	public Collider enemy;
+	public bool inside = false;
+	public Collider enemy = null;
 
 	// Use this for initialization
 	void Start () {
-		inside = false;
-		enemy = null;
 	}
 	
 	// Update is called once per frame

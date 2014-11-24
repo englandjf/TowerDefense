@@ -24,7 +24,8 @@ public class tower : MonoBehaviour {
 	public float shootTimer;
 	//helper variables
 	float nextShot = 0.0f;
-
+	//damage per shot
+	int damagePS = 0;
 	//scripts for each tower
 	tower1Script tower1;
 	tower2Script tower2;
@@ -41,12 +42,14 @@ public class tower : MonoBehaviour {
 			tower1 = gameObject.AddComponent<tower1Script>();
 			tower1.parentTower = this.gameObject;
 			shootTimer = tower1.shootTime;
+			damagePS = tower1.damage;
 		}
 		else if(towerNum == 2)
 		{
 			tower2 = gameObject.AddComponent<tower2Script>();
 			tower2.parentTower = this.gameObject;
 			shootTimer = tower2.shootTime;
+			damagePS = tower2.damage;
 		}
 	}
 	
@@ -82,15 +85,14 @@ public class tower : MonoBehaviour {
 		//SAME SELECTION
 
 		//Detects collision and shoots
-		if(childScript.inside)
+		if(childScript && childScript.inside)
 		{
 			//Get object that is inside
 			if(childScript.enemy){
 				float eX = childScript.enemy.transform.position.x;
 				float eY = childScript.enemy.transform.position.y;
 				//slow down bullet firing
-
-				if(Time.time >= nextShot)
+				if(Time.time > nextShot)
 				{
 					nextShot = Time.time + shootTimer;
 					Debug.Log ("Shot | " + Time.time.ToString() + " | " + nextShot.ToString());
@@ -100,18 +102,14 @@ public class tower : MonoBehaviour {
 					tempScript.posY = eY;
 					tempScript.posZ = transform.position.z;
 					tempScript.enemy = childScript.enemy.gameObject;
+					tempScript.damage = damagePS;
 					//set shoot time
 
 				}
 
-
-
 			}
 		}
-		else
-		{
-			nextShot = 0;
-		}
+	
 	}
 
 	void OnMouseOver()
@@ -126,8 +124,8 @@ public class tower : MonoBehaviour {
 
 	void OnGUI()
 	{
-		GUI.Label(new Rect(50,50,50,50),Time.time.ToString());
-		GUI.Label(new Rect(70,70,50,50),nextShot.ToString());
+		//GUI.Label(new Rect(50,50,50,50),Time.time.ToString());
+		//GUI.Label(new Rect(70,70,50,50),nextShot.ToString());
 	}
 
 
