@@ -26,6 +26,9 @@ public class tower : MonoBehaviour {
 	float nextShot = 0.0f;
 	//damage per shot
 	public int damagePS = 0;
+	//all global variables;
+	public computer computerScript;
+
 	//scripts for each tower
 	tower1Script tower1;
 	tower2Script tower2;
@@ -105,6 +108,7 @@ public class tower : MonoBehaviour {
 					tempScript.posZ = transform.position.z;
 					tempScript.enemy = childScript.enemy.gameObject;
 					tempScript.damage = damagePS;
+
 					//set shoot time
 
 				}

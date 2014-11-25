@@ -99,6 +99,7 @@ public class emptyTower : MonoBehaviour {
 				tower temp2 = temp.GetComponent<tower>();
 				temp2.towerNum = 1;
 				computerScript.money-=100;
+				temp2.computerScript = computerScript;
 				Destroy(this.gameObject);
 			}
 			
@@ -108,6 +109,7 @@ public class emptyTower : MonoBehaviour {
 				tower temp2 = temp.GetComponent<tower>();
 				temp2.towerNum = 2;
 				computerScript.money-=150;
+				temp2.computerScript = computerScript;
 				Destroy(this.gameObject);
 
 			}

@@ -28,10 +28,11 @@ public class tower2Script : MonoBehaviour {
 		if(parentScript.selected)
 		{
 			GUI.Box(new Rect(10,10,100,90), "Tower 2");
-			if(GUI.Button(new Rect(10,100,100,50),"Level"))
+			if(GUI.Button(new Rect(10,100,100,50),"Level") && parentScript.computerScript.money >= 60)
 			{
 				level++;
 				damage++;
+				parentScript.computerScript.money -= 60;
 			}
 
 		}

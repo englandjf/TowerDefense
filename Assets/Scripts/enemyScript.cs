@@ -7,9 +7,11 @@ public class enemyScript : MonoBehaviour {
 	public bool dead = false;
 	const int health = 5;
 	public int damage = 0;
+	computer computerScript;
 	// Use this for initialization
 	void Start () {
-		Debug.Log("Health " + health.ToString());
+		//Debug.Log("Health " + health.ToString());
+		computerScript = GameObject.Find("computer").GetComponent<computer>();
 	}
 	
 	// Update is called once per frame
@@ -18,7 +20,7 @@ public class enemyScript : MonoBehaviour {
 		if(damage  >= health)
 		{
 			dead = true;
-
+			computerScript.money+=25;
 			Destroy(this.gameObject);
 		}
 	}
