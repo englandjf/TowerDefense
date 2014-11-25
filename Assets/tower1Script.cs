@@ -15,18 +15,26 @@ public class tower1Script : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		parentScript = parentTower.GetComponent<tower>();
-
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+		//keeps values the same
+		parentScript.damagePS = damage;
 	}
 
 	void OnGUI()
-	{	if(parentScript.selected)
+	{	
+		if(parentScript.selected)
 		{
 			GUI.Box(new Rect(10,10,100,90), "Tower 1");
+			if(GUI.Button(new Rect(10,100,100,50),"Level"))
+			{
+				level++;
+				damage++;
+			}
+
+
 		}
 
 		if(parentScript.overTower)

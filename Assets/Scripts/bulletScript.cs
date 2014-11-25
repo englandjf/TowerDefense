@@ -16,7 +16,7 @@ public class bulletScript : MonoBehaviour {
 	float speed = 5.0f;
 	// Use this for initialization
 	void Start () {
-
+		Debug.Log("D" + damage.ToString());
 		transform.eulerAngles = new Vector3(0,0,180);
 		enemyInfo = enemy.GetComponent<enemyScript>();
 

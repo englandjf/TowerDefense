@@ -16,9 +16,12 @@ public class emptyTower : MonoBehaviour {
 	bool overTower;
 	//tower is selected
 	bool selected;
-	
+	//computer
+	public computer computerScript;
+
 	// Use this for initialization
 	void Start () {
+		computerScript = GameObject.Find("computer").GetComponent<computer>();
 //		childScript = gameObject.GetComponentInChildren<collisionScript>();
 	}
 	
@@ -40,6 +43,7 @@ public class emptyTower : MonoBehaviour {
 				SS = gameObject.AddComponent<selectionScript>();
 				SS.parentObj = this.gameObject;
 				SS.selectedIcon = selectedIcon;
+				SS.emptyT = true;
 			}
 		}
 		else
@@ -86,21 +90,24 @@ public class emptyTower : MonoBehaviour {
 	{
 		if(selected)
 		{
-			GUI.Box(new Rect(10,10,100,90), "Loader Menu");
+			GUI.Box(new Rect(10,10,120,90), "Towers");
 
-			if(GUI.Button(new Rect(20,40,80,20), "Tower 1")) {
+			//Tower 1 selected
+			if(GUI.Button(new Rect(20,40,100,20), "Tower 1 - 100") && computerScript.money >= 100) {
 
 				GameObject temp =  (GameObject) Instantiate(tower1,transform.position,transform.rotation);
 				tower temp2 = temp.GetComponent<tower>();
 				temp2.towerNum = 1;
+				computerScript.money-=100;
 				Destroy(this.gameObject);
 			}
 			
-			// Make the second button.
-			if(GUI.Button(new Rect(20,70,80,20), "Tower 2")) {			
+			//Tower 2 selected
+			if(GUI.Button(new Rect(20,70,100,20), "Tower 2 - 150") && computerScript.money >= 150) {			
 				GameObject temp = (GameObject) Instantiate(tower2,transform.position,transform.rotation);
 				tower temp2 = temp.GetComponent<tower>();
 				temp2.towerNum = 2;
+				computerScript.money-=150;
 				Destroy(this.gameObject);
 
 			}

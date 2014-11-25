@@ -25,7 +25,7 @@ public class tower : MonoBehaviour {
 	//helper variables
 	float nextShot = 0.0f;
 	//damage per shot
-	int damagePS = 0;
+	public int damagePS = 0;
 	//scripts for each tower
 	tower1Script tower1;
 	tower2Script tower2;
@@ -56,8 +56,9 @@ public class tower : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//SAME SELECTION
-		//Mouse clicked and not in sidebar
 
+
+		//Mouse clicked and not in sidebar
 		if(Input.GetMouseButton(0) && Input.mousePosition.x > 100)
 		{
 			if(overTower)
@@ -72,6 +73,7 @@ public class tower : MonoBehaviour {
 				SS = gameObject.AddComponent<selectionScript>();
 				SS.parentObj = this.gameObject;
 				SS.selectedIcon = selectedIcon;
+				SS.emptyT = false;
 			}
 		}
 		else

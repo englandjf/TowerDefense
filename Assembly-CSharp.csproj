@@ -54,6 +54,7 @@
      <Compile Include="Assets\Scripts\selectionScript.cs" />
      <Compile Include="Assets\Scripts\test.cs" />
      <Compile Include="Assets\Scripts\tower.cs" />
+     <Compile Include="Assets\computer.cs" />
      <Compile Include="Assets\tower1Script.cs" />
      <Compile Include="Assets\tower2Script.cs" />
   </ItemGroup>

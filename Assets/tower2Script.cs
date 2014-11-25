@@ -19,7 +19,8 @@ public class tower2Script : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		//keeps values the same
+		parentScript.damagePS = damage;
 	}
 
 	void OnGUI()
@@ -27,6 +28,12 @@ public class tower2Script : MonoBehaviour {
 		if(parentScript.selected)
 		{
 			GUI.Box(new Rect(10,10,100,90), "Tower 2");
+			if(GUI.Button(new Rect(10,100,100,50),"Level"))
+			{
+				level++;
+				damage++;
+			}
+
 		}
 
 		if(parentScript.overTower)
